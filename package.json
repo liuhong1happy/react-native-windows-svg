@@ -1,0 +1,27 @@
+{
+  "name": "react-native-windows-svg",
+  "version": "0.1.0",
+  "description": "react-native-windows-svg",
+  "main": "react-native-windows-svg.js",
+  "files": ["windows", "react-native-windows-svg.js"],
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuhong1happy/react-native-windows-svg.git"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "react-native-windows",
+    "react-native-windows-svg",
+    "react-native-svg"
+  ],
+  "author": "Holly Liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liuhong1happy/react-native-windows-svg/issues"
+  },
+  "homepage": "https://github.com/liuhong1happy/react-native-windows-svg#readme"
+}
