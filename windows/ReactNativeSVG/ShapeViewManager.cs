@@ -23,7 +23,7 @@ namespace ReactNativeSVG
         private double mStrokeOpacity = 1f;
         private double mFillOpacity = 1f;
         private double mOpacity = 1f;
-        private uint? mStrokeColor = 0;
+        private uint? mStrokeColor = 0xff000000;
         private uint? mFillColor = ColorHelpers.Transparent;
         private double mScale = 1f;
         private double mRotate = 0;
@@ -34,7 +34,7 @@ namespace ReactNativeSVG
         private double mStrokeDashOffset = 0;
         private double mStrokeThickness = 0;
 
-        [ReactProp("stroke", CustomType = "Color")]
+        [ReactProp("stroke", CustomType = "Color", DefaultUInt32 = 0xff000000)]
         public void SetStroke(Shape view, uint? iColor)
         {
             mStrokeColor = iColor;
@@ -139,6 +139,7 @@ namespace ReactNativeSVG
                 Color color = ColorHelpers.Parse(mStrokeColor.Value);
                 color.A = Convert.ToByte(Convert.ToUInt16(color.A) * mStrokeOpacity);
                 view.Stroke = new SolidColorBrush(color);
+                view.StrokeThickness = mStrokeThickness;
                 if (mStrokeDashArray != null)
                 {
                     DoubleCollection dCollection = new DoubleCollection();

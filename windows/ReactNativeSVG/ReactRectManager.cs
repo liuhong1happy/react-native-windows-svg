@@ -22,11 +22,7 @@ namespace ReactNativeSVG
 
         public override void UpdateExtraData(Rectangle root, object extraData)
         {
-            var textNode = extraData as ShapeShadowNode;
-            if (textNode != null)
-            {
-                textNode.UpdateShape(root);
-            }
+
         }
 
         [ReactProp("width")]

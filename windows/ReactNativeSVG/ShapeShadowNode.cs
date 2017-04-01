@@ -1,12 +1,10 @@
-﻿using Facebook.Yoga;
+﻿
+
+using Facebook.Yoga;
 using Newtonsoft.Json.Linq;
 using ReactNative.UIManager;
 using ReactNative.UIManager.Annotations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
@@ -21,7 +19,7 @@ namespace ReactNativeSVG
         private double mStrokeOpacity = 1f;
         private double mFillOpacity = 1f;
         private double mOpacity = 1f;
-        private uint? mStrokeColor = 0;
+        private uint? mStrokeColor = 0xff000000;
         private uint? mFillColor = ColorHelpers.Transparent;
         private double mScale = 1f;
         private double mRotate = 0;
@@ -58,7 +56,7 @@ namespace ReactNativeSVG
             return MeasureOutput.Make(adjustedWidth, adjustedHeight);
         }
 
-        [ReactProp("stroke", CustomType ="Color")]
+        [ReactProp("stroke", CustomType ="Color", DefaultUInt32 = 0xff000000)]
         public void SetStroke(uint? iColor)
         {
             mStrokeColor = iColor;
