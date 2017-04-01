@@ -16,6 +16,17 @@ create windows svg component with Canvas、Shape.
         <Rect stroke="#000000" fill="#ffffff" rx={10} ry={10} strokeWidth={1} />
       </SVG>
     ...
+    
+## Todos
+
+- [x] SVG
+- [x] Rect
+- [ ] Text
+- [ ] Circel
+- [ ] Line
+- [ ] Ellipse
+- [ ] G
+- [ ] Path
 
 ## Contact
 - Email: [liuhong1.happy@163.com](mailto:liuhong1.happy@163.com)
