@@ -23,7 +23,7 @@ create windows svg component with Canvas、Shape.
 - [x] Rect
 - [ ] Text
 - [ ] Circel
-- [ ] Line
+- [x] Line
 - [ ] Ellipse
 - [ ] G
 - [ ] Path

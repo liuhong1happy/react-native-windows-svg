@@ -23,7 +23,8 @@ namespace ReactNativeSVG
         {
             return new List<IViewManager> {
                 new ReactSVGManager(),
-                new ReactRectManager()
+                new ReactRectManager(),
+                new ReactLineManager(),
             };
         }
     }

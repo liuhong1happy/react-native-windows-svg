@@ -41,5 +41,19 @@ var rectFace = {
     },
 }
 
+
+var lineFace = {
+    name: 'LineView',
+    propTypes: {
+        x1: PropTypes.number,
+        y1: PropTypes.number,
+        x2: PropTypes.number,
+        y2: PropTypes.number,
+        ...shapeFace.propTypes,
+        ...View.propTypes // include the default view properties
+    },
+}
+
 export const SVG = requireNativeComponent('RCTSVGView', rectFace);
 export const Rect = requireNativeComponent('RCTRectView', rectFace);
+export const Line = requireNativeComponent('RCTLineView', lineFace);
