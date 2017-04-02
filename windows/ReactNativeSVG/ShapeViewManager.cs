@@ -32,7 +32,7 @@ namespace ReactNativeSVG
         private double mY = 0;
         private JArray mStrokeDashArray;
         private double mStrokeDashOffset = 0;
-        private double mStrokeThickness = 0;
+        private double mStrokeThickness = 1;
 
         [ReactProp("stroke", CustomType = "Color", DefaultUInt32 = 0xff000000)]
         public void SetStroke(Shape view, uint? iColor)

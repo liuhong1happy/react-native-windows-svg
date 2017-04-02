@@ -107,6 +107,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PathParser.cs" />
     <Compile Include="ReactCircleManager.cs" />
     <Compile Include="ReactEllipseManager.cs" />
     <Compile Include="ReactLineManager.cs" />

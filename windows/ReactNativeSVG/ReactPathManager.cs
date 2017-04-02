@@ -28,7 +28,8 @@ namespace ReactNativeSVG
         [ReactProp("d")]
         public void setWidth(Path view, string d)
         {
-            view.SetValue(Path.DataProperty, d);
+            PathParser pp = new PathParser(d);
+            view.Data = pp.getPath();
         }
 
 

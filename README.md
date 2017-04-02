@@ -22,11 +22,11 @@ create windows svg component with Canvas、Shape.
 - [x] SVG
 - [x] Rect
 - [ ] Text
-- [ ] Circel
+- [x] Circel
 - [x] Line
-- [ ] Ellipse
+- [x] Ellipse
 - [ ] G
-- [ ] Path
+- [x] Path
 
 ## Contact
 - Email: [liuhong1.happy@163.com](mailto:liuhong1.happy@163.com)
