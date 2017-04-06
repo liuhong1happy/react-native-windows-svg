@@ -108,10 +108,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PathParser.cs" />
+    <Compile Include="PointsParser.cs" />
     <Compile Include="ReactCircleManager.cs" />
     <Compile Include="ReactEllipseManager.cs" />
     <Compile Include="ReactLineManager.cs" />
     <Compile Include="ReactPathManager.cs" />
+    <Compile Include="ReactPolygonManager.cs" />
+    <Compile Include="ReactPolylineManager.cs" />
     <Compile Include="ReactRectManager.cs" />
     <Compile Include="ReactSVGManager.cs" />
     <Compile Include="ShapeShadowNode.cs" />

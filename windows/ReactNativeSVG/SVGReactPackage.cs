@@ -27,7 +27,9 @@ namespace ReactNativeSVG
                 new ReactLineManager(),
                 new ReactCircleManager(),
                 new ReactEllipseManager(),
-                new ReactPathManager()
+                new ReactPathManager(),
+                new ReactPolygonManager(),
+                new ReactPolylineManager(),
             };
         }
     }

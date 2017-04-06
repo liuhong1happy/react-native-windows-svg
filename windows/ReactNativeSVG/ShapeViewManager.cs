@@ -2,6 +2,7 @@
 using ReactNative.UIManager;
 using ReactNative.UIManager.Annotations;
 using System;
+using System.Collections.Generic;
 using Windows.Foundation;
 using Windows.UI;
 #if WINDOWS_UWP
@@ -33,6 +34,24 @@ namespace ReactNativeSVG
         private JArray mStrokeDashArray;
         private double mStrokeDashOffset = 0;
         private double mStrokeThickness = 1;
+        private int mStrokeLinecap = CAP_BUTT;
+        private int mStrokeLinejoin = JOIN_MITER;
+        private int mFillRule = FILL_RULE_EVENODD;
+        private double mStrokeMiterlimit = 0;
+
+        // strokeLinecap
+        private static int CAP_BUTT = 0;
+        private static int CAP_ROUND = 1;
+        private static int CAP_SQUARE = 2;
+
+        // strokeLinejoin
+        private static int JOIN_BEVEL = 2;
+        private static int JOIN_MITER = 0;
+        private static int JOIN_ROUND = 1;
+
+        // fillRule
+        private static int FILL_RULE_EVENODD = 0;
+        private static int FILL_RULE_NONZERO = 1;
 
         [ReactProp("stroke", CustomType = "Color", DefaultUInt32 = 0xff000000)]
         public void SetStroke(Shape view, uint? iColor)
@@ -55,6 +74,24 @@ namespace ReactNativeSVG
             UpdateShape(view);
         }
 
+        [ReactProp("strokeLinecap")]
+        public void SetStrokeLinecap(Shape view, string strokeLinecap)
+        {
+            List<string> strokeLinecapArray = new List<string>(){ "butt", "square", "round" };
+            mStrokeLinecap = strokeLinecapArray.IndexOf(strokeLinecap);
+            // mStrokeLinecap = strokeLinecap;
+            UpdateShape(view);
+        }
+
+        [ReactProp("strokeLinejoin")]
+        public void SetStrokeLinejoin(Shape view, string strokeLinejoin)
+        {
+            List<string> strokeLinejoinArray = new List<string>() { "miter", "bevel", "round" };
+            mStrokeLinejoin = strokeLinejoinArray.IndexOf(strokeLinejoin);
+            // mStrokeLinejoin = strokeLinejoin;
+            UpdateShape(view);
+        }
+
         [ReactProp("strokeDasharray")]
         public void setStrokeDasharray(Shape view, JArray strokeDasharray)
         {
@@ -66,6 +103,14 @@ namespace ReactNativeSVG
         public void setStrokeDashoffset(Shape view, double strokeDashOffset)
         {
             mStrokeDashOffset = strokeDashOffset;
+            UpdateShape(view);
+        }
+
+
+        [ReactProp("strokeMiterlimit", DefaultDouble = 0f)]
+        public void setStrokeMiterlimit(Shape view, double strokeMiterlimit)
+        {
+            mStrokeMiterlimit = strokeMiterlimit;
             UpdateShape(view);
         }
 
@@ -150,6 +195,11 @@ namespace ReactNativeSVG
                     view.StrokeDashArray = dCollection;
                 }
                 view.StrokeDashOffset = mStrokeDashOffset;
+                view.StrokeMiterLimit = mStrokeMiterlimit;
+                view.StrokeLineJoin = (PenLineJoin)mStrokeLinejoin;
+                view.StrokeStartLineCap = (PenLineCap)mStrokeLinecap;
+                view.StrokeDashCap = (PenLineCap)mStrokeLinecap;
+                view.StrokeEndLineCap = (PenLineCap)mStrokeLinecap;
             }
             if (mFillColor.HasValue)
             {
@@ -171,5 +221,14 @@ namespace ReactNativeSVG
             view.RenderTransform = trfg;
         }
 
+        /// <summary>
+        /// Sets the dimensions of the view.
+        /// </summary>
+        /// <param name="view">The view.</param>
+        /// <param name="dimensions">The output buffer.</param>
+        public void SetDimensions(Shape view, Dimensions dimensions)
+        {
+            // do nothing
+        }
     }
 }
