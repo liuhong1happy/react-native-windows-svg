@@ -51,9 +51,11 @@ namespace ReactNativeSVG
 
         protected override Polyline CreateViewInstance(ThemedReactContext reactContext)
         {
+            
             return new Polyline()
             {
-                FillRule = FillRule.EvenOdd
+                FillRule = FillRule.EvenOdd,
+                DataContext = new ShapeViewModel()
             };
         }
     }

@@ -119,6 +119,7 @@
     <Compile Include="ReactSVGManager.cs" />
     <Compile Include="ShapeShadowNode.cs" />
     <Compile Include="ShapeViewManager.cs" />
+    <Compile Include="ShapeViewModel.cs" />
     <Compile Include="SVGReactPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SVGShadowNode.cs" />

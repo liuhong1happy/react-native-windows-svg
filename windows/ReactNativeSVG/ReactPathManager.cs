@@ -45,7 +45,10 @@ namespace ReactNativeSVG
 
         protected override Path CreateViewInstance(ThemedReactContext reactContext)
         {
-            return new Path();
+            return new Path()
+            {
+                DataContext = new ShapeViewModel()
+            };
         }
     }
 }

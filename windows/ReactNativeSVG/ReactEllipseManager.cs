@@ -69,6 +69,7 @@ namespace ReactNativeSVG
             {
                 Width = 4f,
                 Height = 4f,
+                DataContext = new ShapeViewModel()
             };
         }
 

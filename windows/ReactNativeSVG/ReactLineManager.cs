@@ -59,6 +59,7 @@ namespace ReactNativeSVG
                 Y1 = 0,
                 X2 = 4f,
                 Y2 = 4f,
+                DataContext = new ShapeViewModel()
             };
         }
 

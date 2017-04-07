@@ -18,7 +18,10 @@ namespace ReactNativeSVG
 
         protected override Canvas CreateViewInstance(ThemedReactContext reactContext)
         {
-            return new Canvas();
+            return new Canvas()
+            {
+                DataContext = new ShapeViewModel()
+            };
         }
 
         [ReactProp("width")]

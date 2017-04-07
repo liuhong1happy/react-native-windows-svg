@@ -52,7 +52,8 @@ namespace ReactNativeSVG
         {
             return new Polygon()
             {
-                FillRule = FillRule.EvenOdd
+                FillRule = FillRule.EvenOdd,
+                DataContext = new ShapeViewModel()
             };
         }
     }

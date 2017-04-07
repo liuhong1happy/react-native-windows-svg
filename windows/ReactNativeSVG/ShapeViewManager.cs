@@ -20,205 +20,199 @@ namespace ReactNativeSVG
         where TFrameworkElement : Shape
         where TLayoutShadowNode : LayoutShadowNode
     {
-
-        private double mStrokeOpacity = 1f;
-        private double mFillOpacity = 1f;
-        private double mOpacity = 1f;
-        private uint? mStrokeColor = 0xff000000;
-        private uint? mFillColor = ColorHelpers.Transparent;
-        private double mScale = 1f;
-        private double mRotate = 0;
-        private Point mOrigin = new Point(0, 0);
-        private double mX = 0;
-        private double mY = 0;
-        private JArray mStrokeDashArray;
-        private double mStrokeDashOffset = 0;
-        private double mStrokeThickness = 1;
-        private int mStrokeLinecap = CAP_BUTT;
-        private int mStrokeLinejoin = JOIN_MITER;
-        private int mFillRule = FILL_RULE_EVENODD;
-        private double mStrokeMiterlimit = 0;
-
-        // strokeLinecap
-        private static int CAP_BUTT = 0;
-        private static int CAP_ROUND = 1;
-        private static int CAP_SQUARE = 2;
-
-        // strokeLinejoin
-        private static int JOIN_BEVEL = 2;
-        private static int JOIN_MITER = 0;
-        private static int JOIN_ROUND = 1;
-
-        // fillRule
-        private static int FILL_RULE_EVENODD = 0;
-        private static int FILL_RULE_NONZERO = 1;
-
         [ReactProp("stroke", CustomType = "Color", DefaultUInt32 = 0xff000000)]
         public void SetStroke(Shape view, uint? iColor)
         {
-            mStrokeColor = iColor;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.StrokeProperty, iColor);
+            UpdateShape(view, viewModel, "stroke");
         }
 
         [ReactProp("strokeWidth", DefaultDouble = 1f)]
         public void SetStrokeWidth(Shape view,double thickness)
         {
-            mStrokeThickness = thickness;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.StrokeThicknessProperty, thickness);
+            UpdateShape(view, viewModel, "strokeWidth");
         }
 
         [ReactProp("strokeOpacity", DefaultDouble = 1f)]
         public void SetStrokeOpacity(Shape view, double strokeOpacity)
         {
-            mStrokeOpacity = strokeOpacity;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.StrokeOpacityProperty, strokeOpacity);
+            UpdateShape(view, viewModel, "strokeOpacity");
         }
 
         [ReactProp("strokeLinecap")]
         public void SetStrokeLinecap(Shape view, string strokeLinecap)
         {
             List<string> strokeLinecapArray = new List<string>(){ "butt", "square", "round" };
-            mStrokeLinecap = strokeLinecapArray.IndexOf(strokeLinecap);
-            // mStrokeLinecap = strokeLinecap;
-            UpdateShape(view);
+            int iStrokeLinecap = strokeLinecapArray.IndexOf(strokeLinecap);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.StrokeLinecapProperty, iStrokeLinecap);
+            UpdateShape(view, viewModel, "strokeLinecap");
         }
 
         [ReactProp("strokeLinejoin")]
         public void SetStrokeLinejoin(Shape view, string strokeLinejoin)
         {
             List<string> strokeLinejoinArray = new List<string>() { "miter", "bevel", "round" };
-            mStrokeLinejoin = strokeLinejoinArray.IndexOf(strokeLinejoin);
-            // mStrokeLinejoin = strokeLinejoin;
-            UpdateShape(view);
+            int iStrokeLinejoin = strokeLinejoinArray.IndexOf(strokeLinejoin);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.StrokeLinejoinProperty, iStrokeLinejoin);
+            UpdateShape(view, viewModel, "strokeLinejoin");
         }
 
         [ReactProp("strokeDasharray")]
         public void setStrokeDasharray(Shape view, JArray strokeDasharray)
         {
-            mStrokeDashArray = strokeDasharray;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.StrokeDashArrayProperty, strokeDasharray);
+            UpdateShape(view, viewModel, "strokeDasharray");
         }
 
         [ReactProp("strokeDashoffset", DefaultDouble = 0f)]
         public void setStrokeDashoffset(Shape view, double strokeDashOffset)
         {
-            mStrokeDashOffset = strokeDashOffset;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.StrokeDashOffsetProperty, strokeDashOffset);
+            UpdateShape(view, viewModel, "strokeDashoffset");
         }
 
 
         [ReactProp("strokeMiterlimit", DefaultDouble = 0f)]
         public void setStrokeMiterlimit(Shape view, double strokeMiterlimit)
         {
-            mStrokeMiterlimit = strokeMiterlimit;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.StrokeMiterlimitProperty, strokeMiterlimit);
+            UpdateShape(view, viewModel, "strokeMiterlimit");
         }
 
         [ReactProp("fill", CustomType = "Color")]
         public void SetFill(Shape view, uint? iColor)
         {
-            mFillColor = iColor;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.FillProperty, iColor);
+            UpdateShape(view, viewModel, "fill");
         }
 
         [ReactProp("fillOpacity", DefaultDouble = 1f)]
         public void SetFillOpacity(Shape view, double fillOpacity)
         {
-            mFillOpacity = fillOpacity;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.FillOpacityProperty, fillOpacity);
+            UpdateShape(view, viewModel, "fillOpacity");
         }
 
         [ReactProp("scale", DefaultDouble = 1f)]
         public void SetScale(Shape view, double scale)
         {
-            mScale = scale;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.ScaleProperty, scale);
+            UpdateShape(view, viewModel, "scale");
         }
 
         [ReactProp("rotate", DefaultDouble = 0f)]
         public void SetRotate(Shape view, double rotate)
         {
-            mRotate = rotate;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.RotateProperty, rotate);
+            UpdateShape(view, viewModel, "rotate");
         }
 
         [ReactProp("originX", DefaultDouble = 0f)]
         public void SetOriginX(Shape view, double originX)
         {
-            mOrigin.X = originX;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            Point origin = viewModel.Origin;
+            origin.X = originX;
+            viewModel.SetValue(ShapeViewModel.OriginProperty, origin);
+            UpdateShape(view, viewModel, "originX");
         }
 
         [ReactProp("originY", DefaultDouble = 0f)]
         public void SetOriginY(Shape view, double originY)
         {
-            mOrigin.Y = originY;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            Point origin = viewModel.Origin;
+            origin.Y = originY;
+            viewModel.SetValue(ShapeViewModel.OriginProperty, origin);
+            UpdateShape(view, viewModel, "originY");
         }
 
         [ReactProp("origin", CustomType = "Point")]
         public void SetOriginY(Shape view, Point origin)
         {
-            mOrigin = origin;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.OriginProperty, origin);
+            UpdateShape(view, viewModel, "origin");
         }
 
         [ReactProp("x", DefaultDouble = 0f)]
         public void SetX(Shape view, double x)
         {
-            mX = x;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.XProperty, x);
+            UpdateShape(view, viewModel, "x");
         }
 
         [ReactProp("y", DefaultDouble = 0f)]
         public void SetY(Shape view, double y)
         {
-            mY = y;
-            UpdateShape(view);
+            ShapeViewModel viewModel = (ShapeViewModel)view.DataContext;
+            viewModel.SetValue(ShapeViewModel.YProperty, y);
+            UpdateShape(view, viewModel,"y");
         }
 
-        public void UpdateShape(Shape view)
+        private void UpdateShape(Shape view, ShapeViewModel viewModel, string updateKey)
         {
-            if (mStrokeColor.HasValue)
+            // 更新UpdateKeys
+            List<String> UpdateKeys = new List<string>(viewModel.UpdateKeys);
+            UpdateKeys.Add(updateKey);
+            viewModel.SetValue(ShapeViewModel.UpdateKeysProperty, UpdateKeys);
+
+            if (viewModel.Stroke.HasValue)
             {
-                Color color = ColorHelpers.Parse(mStrokeColor.Value);
-                color.A = Convert.ToByte(Convert.ToUInt16(color.A) * mStrokeOpacity);
+                Color color = ColorHelpers.Parse(viewModel.Stroke.Value);
+                color.A = Convert.ToByte(Convert.ToUInt16(color.A) * viewModel.StrokeOpacity);
                 view.Stroke = new SolidColorBrush(color);
-                view.StrokeThickness = mStrokeThickness;
-                if (mStrokeDashArray != null)
+                view.StrokeThickness = viewModel.StrokeThickness;
+                if (viewModel.StrokeDashArray != null)
                 {
                     DoubleCollection dCollection = new DoubleCollection();
-                    for (int i = 0; i < mStrokeDashArray.Count; ++i)
+                    for (int i = 0; i < viewModel.StrokeDashArray.Count; ++i)
                     {
-                        dCollection.Add(Convert.ToDouble(mStrokeDashArray[i].ToString()));
+                        dCollection.Add(Convert.ToDouble(viewModel.StrokeDashArray[i].ToString()));
                     }
                     view.StrokeDashArray = dCollection;
                 }
-                view.StrokeDashOffset = mStrokeDashOffset;
-                view.StrokeMiterLimit = mStrokeMiterlimit;
-                view.StrokeLineJoin = (PenLineJoin)mStrokeLinejoin;
-                view.StrokeStartLineCap = (PenLineCap)mStrokeLinecap;
-                view.StrokeDashCap = (PenLineCap)mStrokeLinecap;
-                view.StrokeEndLineCap = (PenLineCap)mStrokeLinecap;
+                view.StrokeDashOffset = viewModel.StrokeDashOffset;
+                view.StrokeMiterLimit = viewModel.StrokeMiterlimit;
+                view.StrokeLineJoin = (PenLineJoin)viewModel.StrokeLinejoin;
+                view.StrokeStartLineCap = (PenLineCap)viewModel.StrokeLinecap;
+                view.StrokeDashCap = (PenLineCap)viewModel.StrokeLinecap;
+                view.StrokeEndLineCap = (PenLineCap)viewModel.StrokeLinecap;
             }
-            if (mFillColor.HasValue)
+            if (viewModel.Fill.HasValue)
             {
-                Color color = ColorHelpers.Parse(mFillColor.Value);
-                color.A = Convert.ToByte(Convert.ToUInt16(color.A) * mFillOpacity);
+                Color color = ColorHelpers.Parse(viewModel.Fill.Value);
+                color.A = Convert.ToByte(Convert.ToUInt16(color.A) * viewModel.FillOpacity);
                 view.Fill = new SolidColorBrush(color);
             }
-            view.SetValue(Canvas.LeftProperty, mX);
-            view.SetValue(Canvas.TopProperty, mY);
-            view.RenderTransformOrigin = mOrigin;
+            view.SetValue(Canvas.LeftProperty, viewModel.X);
+            view.SetValue(Canvas.TopProperty, viewModel.Y);
+            view.RenderTransformOrigin = viewModel.Origin;
             ScaleTransform sctr = new ScaleTransform();
-            sctr.ScaleY = mScale;
-            sctr.ScaleX = mScale;
+            sctr.ScaleY = viewModel.Scale;
+            sctr.ScaleX = viewModel.Scale;
             RotateTransform rttr = new RotateTransform();
-            rttr.Angle = mRotate;
+            rttr.Angle = viewModel.Rotate;
             TransformGroup trfg = new TransformGroup();
             trfg.Children.Add(sctr);
             trfg.Children.Add(rttr);
             view.RenderTransform = trfg;
+            view.DataContext = viewModel;
         }
 
         /// <summary>
