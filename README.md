@@ -25,7 +25,7 @@ create windows svg component with Canvas、Shape.
 - [x] Circel
 - [x] Line
 - [x] Ellipse
-- [ ] G
+- [x] G
 - [x] Path
 - [x] Polygon
 - [x] Polyline

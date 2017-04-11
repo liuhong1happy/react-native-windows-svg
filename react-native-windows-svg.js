@@ -113,6 +113,14 @@ var polygonFace = {
     }
 }
 
+var groupFace = {
+    name: 'GroupView',
+    propTypes: {
+        ...shapeFace.propTypes,
+        ...View.propTypes // include the default view properties
+    }
+}
+
 export const SVG = requireNativeComponent('RCTSVGView', rectFace);
 export const Rect = requireNativeComponent('RCTRectView', rectFace);
 export const Line = requireNativeComponent('RCTLineView', lineFace);
@@ -121,3 +129,4 @@ export const Ellipse = requireNativeComponent('RCTEllipseView', ellipseFace);
 export const Polyline = requireNativeComponent('RCTPolylineView', polylineFace);
 export const Polygon = requireNativeComponent('RCTPolygonView', polygonFace);
 export const Path = requireNativeComponent('RCTPathView', pathFace);
+export const G = requireNativeComponent('RCTGroupView', groupFace);

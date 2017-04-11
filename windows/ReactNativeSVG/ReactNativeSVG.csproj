@@ -107,10 +107,12 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GroupViewManager.cs" />
     <Compile Include="PathParser.cs" />
     <Compile Include="PointsParser.cs" />
     <Compile Include="ReactCircleManager.cs" />
     <Compile Include="ReactEllipseManager.cs" />
+    <Compile Include="ReactGroupManager.cs" />
     <Compile Include="ReactLineManager.cs" />
     <Compile Include="ReactPathManager.cs" />
     <Compile Include="ReactPolygonManager.cs" />

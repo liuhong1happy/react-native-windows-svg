@@ -1,6 +1,6 @@
 {
   "name": "react-native-windows-svg",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "react-native-windows-svg",
   "main": "react-native-windows-svg.js",
   "files": ["windows", "react-native-windows-svg.js"],

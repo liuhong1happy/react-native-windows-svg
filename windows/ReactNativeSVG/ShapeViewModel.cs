@@ -6,7 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using Windows.UI;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Shapes;
 
 namespace ReactNativeSVG
 {
@@ -218,6 +222,60 @@ namespace ReactNativeSVG
         public static readonly DependencyProperty UpdateKeysProperty =
             DependencyProperty.Register("UpdateKeys", typeof(List<String>), typeof(ShapeViewModel), new PropertyMetadata(new List<String>()));
 
+        /// <summary>
+        /// 更新Shape组件
+        /// </summary>
+        /// <param name="view">Shape组件</param>
+        /// <param name="viewModel">DataContext上下文数据</param>
+        /// <param name="updateKey">更新的key值</param>
+        public static void UpdateShape(Shape view, ShapeViewModel viewModel, string updateKey)
+        {
+            // 更新UpdateKeys
+            List<String> UpdateKeys = new List<string>(viewModel.UpdateKeys);
+            UpdateKeys.Add(updateKey);
+            viewModel.SetValue(ShapeViewModel.UpdateKeysProperty, UpdateKeys);
 
+            if (viewModel.Stroke.HasValue)
+            {
+                Color color = ColorHelpers.Parse(viewModel.Stroke.Value);
+                color.A = Convert.ToByte(Convert.ToUInt16(color.A) * viewModel.StrokeOpacity);
+                view.Stroke = new SolidColorBrush(color);
+                view.StrokeThickness = viewModel.StrokeThickness;
+                if (viewModel.StrokeDashArray != null)
+                {
+                    DoubleCollection dCollection = new DoubleCollection();
+                    for (int i = 0; i < viewModel.StrokeDashArray.Count; ++i)
+                    {
+                        dCollection.Add(Convert.ToDouble(viewModel.StrokeDashArray[i].ToString()));
+                    }
+                    view.StrokeDashArray = dCollection;
+                }
+                view.StrokeDashOffset = viewModel.StrokeDashOffset;
+                view.StrokeMiterLimit = viewModel.StrokeMiterlimit;
+                view.StrokeLineJoin = (PenLineJoin)viewModel.StrokeLinejoin;
+                view.StrokeStartLineCap = (PenLineCap)viewModel.StrokeLinecap;
+                view.StrokeDashCap = (PenLineCap)viewModel.StrokeLinecap;
+                view.StrokeEndLineCap = (PenLineCap)viewModel.StrokeLinecap;
+            }
+            if (viewModel.Fill.HasValue)
+            {
+                Color color = ColorHelpers.Parse(viewModel.Fill.Value);
+                color.A = Convert.ToByte(Convert.ToUInt16(color.A) * viewModel.FillOpacity);
+                view.Fill = new SolidColorBrush(color);
+            }
+            view.SetValue(Canvas.LeftProperty, viewModel.X);
+            view.SetValue(Canvas.TopProperty, viewModel.Y);
+            view.RenderTransformOrigin = viewModel.Origin;
+            ScaleTransform sctr = new ScaleTransform();
+            sctr.ScaleY = viewModel.Scale;
+            sctr.ScaleX = viewModel.Scale;
+            RotateTransform rttr = new RotateTransform();
+            rttr.Angle = viewModel.Rotate;
+            TransformGroup trfg = new TransformGroup();
+            trfg.Children.Add(sctr);
+            trfg.Children.Add(rttr);
+            view.RenderTransform = trfg;
+            view.DataContext = viewModel;
+        }
     }
 }
