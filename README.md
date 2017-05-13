@@ -9,6 +9,29 @@ create windows svg component with Canvas、Shape.
   
 ## Usage
     
+1. Add the SVGReactPackage in your `Solution`.
+
+```c#
+        /// <summary>
+        /// MainPage.cs
+        /// </summary>
+        ...
+        public override List<IReactPackage> Packages
+        {
+            get
+            {
+                return new List<IReactPackage>
+                {
+                    new MainReactPackage(),
+                    new SVGReactPackage() // add this line
+                };
+            }
+        }
+        ...
+```
+
+2. Use the component in your react-native project.
+```js
     ...
     import {SVG, Rect } from 'react-native-windows-svg';
     ...
@@ -16,7 +39,7 @@ create windows svg component with Canvas、Shape.
         <Rect stroke="#000000" fill="#ffffff" rx={10} ry={10} strokeWidth={1} />
       </SVG>
     ...
-    
+```
 ## Todos
 
 - [x] SVG
