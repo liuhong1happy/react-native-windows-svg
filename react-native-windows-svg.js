@@ -121,7 +121,7 @@ var groupFace = {
     }
 }
 
-export const SVG = requireNativeComponent('RCTSVGView', rectFace);
+export const Svg = requireNativeComponent('RCTSVGView', rectFace);
 export const Rect = requireNativeComponent('RCTRectView', rectFace);
 export const Line = requireNativeComponent('RCTLineView', lineFace);
 export const Circle = requireNativeComponent('RCTCircleView', circleFace);
