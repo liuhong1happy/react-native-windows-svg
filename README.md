@@ -33,11 +33,11 @@ create windows svg component with Canvas、Shape.
 2. Use the component in your react-native project.
 ```js
     ...
-    import {SVG, Rect } from 'react-native-windows-svg';
+    import {Svg, Rect } from 'react-native-windows-svg';
     ...
-      <SVG width={300} height={300} >
+      <Svg width={300} height={300} >
         <Rect stroke="#000000" fill="#ffffff" rx={10} ry={10} strokeWidth={1} />
-      </SVG>
+      </Svg>
     ...
 ```
 ## Todos
